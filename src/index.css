@@ -1,0 +1,99 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'DM Sans', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #f2f2f2;
+  background-color: #0a0a0a;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 18% 16%, rgba(212, 175, 55, 0.14), transparent 45%),
+    radial-gradient(circle at 82% 4%, rgba(255, 255, 255, 0.05), transparent 34%),
+    linear-gradient(180deg, #101010 0%, #070707 100%);
+  color: #f3f3f3;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.noise-overlay {
+  /* Tune opacity/background-size for stronger or softer film grain. */
+  opacity: 0.08;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.4) 0.4px, transparent 0.4px);
+  background-size: 3px 3px;
+}
+
+.marquee-track {
+  display: inline-block;
+  min-width: 200%;
+  animation: marquee 32s linear infinite;
+}
+
+.cinematic-film-strip {
+  background:
+    linear-gradient(180deg, rgba(212, 175, 55, 0.3), rgba(212, 175, 55, 0.08)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03), transparent 22%);
+}
+
+.cinematic-sweep::before {
+  content: '';
+  position: absolute;
+  inset: -140%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.35), transparent);
+  transform: rotate(16deg);
+  animation: cardSweep 2.2s ease-in-out infinite;
+}
+
+.feature-card {
+  transform-style: preserve-3d;
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.glass-card {
+  background: linear-gradient(150deg, rgba(26, 26, 26, 0.86), rgba(10, 10, 10, 0.72));
+  backdrop-filter: blur(18px);
+  box-shadow: 0 26px 58px rgba(0, 0, 0, 0.55);
+}
+
+@keyframes marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes cardSweep {
+  0% {
+    transform: translateX(-110%) rotate(16deg);
+  }
+  100% {
+    transform: translateX(110%) rotate(16deg);
+  }
+}
+
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
